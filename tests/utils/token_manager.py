@@ -1,3 +1,5 @@
+from requests_oauthlib import OAuth2Session
+
 from utils.request import APIRequest
 from config import ACCOUNT_BASE_URI, REFRESH_TOKEN, CLIENT_ID, CLIENT_SECRET
 from datetime import datetime, timedelta

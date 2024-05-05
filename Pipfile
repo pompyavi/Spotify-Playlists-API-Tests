@@ -8,6 +8,7 @@ requests = "*"
 assertpy = "*"
 pytest = "*"
 allure-pytest = "*"
+requests-oauthlib = "*"
 
 [dev-packages]
 

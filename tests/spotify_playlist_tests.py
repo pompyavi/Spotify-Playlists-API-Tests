@@ -4,6 +4,7 @@ from client.playlist import Playlist
 from assertpy import assert_that
 
 from tests.helpers.spotify_helpers import get_playlist_id, get_error_details
+from tests.utils.status_codes import StatusCode
 
 playlist = Playlist()
 
@@ -46,7 +47,7 @@ def test_user_cannot_create_playlist_without_valid_name():
     assert_that(response.status_code).is_equal_to(requests.codes.bad_request)
     status_code, message = get_error_details(response.as_dict)
     assert_that(status_code).is_equal_to(requests.codes.bad_request)
-    assert_that(message).is_equal_to('Missing required field: name')
+    assert_that(message).is_equal_to(StatusCode.BAD_REQUEST.value.message)
 
 
 def test_user_cannot_create_playlist_without_valid_access_token():
@@ -55,4 +56,4 @@ def test_user_cannot_create_playlist_without_valid_access_token():
     assert_that(response.status_code).is_equal_to(requests.codes.unauthorized)
     status_code, message = get_error_details(response.as_dict)
     assert_that(status_code).is_equal_to(requests.codes.unauthorized)
-    assert_that(message).is_equal_to('Invalid access token')
+    assert_that(message).is_equal_to(StatusCode.UNAUTHORIZED.value.message)
